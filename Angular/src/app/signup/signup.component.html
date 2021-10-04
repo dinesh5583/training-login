@@ -1,0 +1,53 @@
+<div class="text-center">
+  <div class="spinner-border text-danger m-5" style="width: 5rem; height: 5rem;" role="status"
+  *ngIf="isLoading">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>
+  <div class="container" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-md-7 mx-auto mt-2 py-3 rounded shadow box">
+      <form [formGroup]="empform" (ngSubmit)="onSignup()">
+        <div *ngIf="mode=='create';else edit">
+          <h1 class="text-center">Sign up</h1>
+        </div>
+        <ng-template #edit>
+          <h1 class="text-center">Update User</h1>
+        </ng-template>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name"
+          placeholder="Enter your name" formControlName="user_name">
+          <small class="text-danger"
+          *ngIf="!empform.get('user_name').valid && empform.get('user_name').touched">
+          Please enter your name</small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email"
+          placeholder="Enter email" formControlName="user_email">
+          <small class="text-danger"
+          *ngIf="!empform.get('user_email').valid && empform.get('user_email').touched">
+          Please enter valid email</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password"
+          placeholder="Enter Password" formControlName="user_password">
+          <small class="text-danger"
+          *ngIf="!empform.get('user_password').valid && empform.get('user_password').touched">
+          Please enter your password</small>
+        </div>
+        <!-- <div class="form-group">
+          <label for="confirmpass">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmpass"
+          placeholder="Enter confirm Password"
+          formControlName="confirmpass">
+          <small class="text-danger" *ngIf="text">Password does not match</small>
+        </div> -->
+        <button type="submit" class="btn btn-danger">Signup</button>
+      </form>
+    </div>
+
+  </div>
+</div>

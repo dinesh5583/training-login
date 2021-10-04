@@ -1,0 +1,19 @@
+<div class="text-center">
+  <div class="spinner-border text-danger m-5" style="width: 5rem; height: 5rem;" role="status"
+  *ngIf="isLoading">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>
+<div class="container" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-md-7 mx-auto py-5">
+      <ul class="list-group" *ngFor="let u of user">
+        <li class="list-group-item active">User id: {{u.user_id}}</li>
+        <li class="list-group-item">User Name: {{u.user_name}}</li>
+        <li class="list-group-item">User Email: {{u.user_email}}</li>
+        <li class="list-group-item">User password: {{u.user_password}}</li>
+      </ul>
+    </div>
+
+  </div>
+</div>

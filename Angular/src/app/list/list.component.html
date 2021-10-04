@@ -1,0 +1,30 @@
+<div class="text-center">
+  <div class="spinner-border text-danger m-5" style="width: 5rem; height: 5rem;" role="status"
+  *ngIf="isLoading">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>
+<div class="container" *ngIf="!isLoading">
+  <table class="table my-5">
+    <thead>
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">User Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listUsers; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{list.user_id}}</td>
+        <td>{{list.user_name}}</td>
+        <td>{{list.user_email}}</td>
+        <td><button class="btn btn-danger btn-sm mr-4" (click)="onDelete(list.user_id)">Delete</button>
+          <button class="btn btn-success btn-sm" [routerLink]="['/view',list.user_id]">View</button></td>
+          <button class="btn btn-primary btn-sm" [routerLink]="['/edit',list.user_id]" >Edit</button>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
